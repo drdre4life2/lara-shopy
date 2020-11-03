@@ -145,8 +145,8 @@ return [
     |
     */
 
-    'api_scopes' => env('SHOPIFY_API_SCOPES', 'read_products,write_products'),
-
+    'api_scopes' => env('SHOPIFY_API_SCOPES', 'read_products,read_shipping, write_shipping, read_orders,
+    read_cutomers, read_locals, read_shipping'),
     /*
     |--------------------------------------------------------------------------
     | Shopify API Grant Mode
