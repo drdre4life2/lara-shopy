@@ -1,5 +1,5 @@
 @extends('shopify-app::layouts.default')
-@include('layout.app')
+@include('layouts.app')
 
 @section('content')
     <!-- You are: (shop domain name) -->
