@@ -5,7 +5,8 @@
 
     <!-- You are: (shop domain name) -->
     <div class="container">
-  <h2>Enter ClicknShip details for {{ Auth::user()->name }}</h2>
+    <p></p>
+  <h4>Enter ClicknShip details for {{ Auth::user()->name }}</h2>
   <p></p>
   <form class="form-horizontal" action="/action_page.php">
     <div class="form-group">
@@ -26,7 +27,7 @@
         <input type="number" class="form-control" id="phone" placeholder="Primary Store City" name="phone">
       </div>
     </div>
-
+      <div class="form-group">
      <label for="sel1">Primary Store city:</label>
      <select class="form-control" id="sel1" name="store_city">
      <option value="" ></option>
@@ -85,6 +86,7 @@
 													<option value="Yola" >Yola</option>
 													<option value="Zaria" >Zaria</option>
   </select>
+   </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="pwd">Store Location ID</label>
       <div class="col-sm-10">          
