@@ -4,14 +4,13 @@
 @section('content')
 
     <!-- You are: (shop domain name) -->
-    <p>You are: {{ Auth::user()->name }}</p>
     <div class="container">
-  <h2>Enter your ClicknShip Shop Details</h2>
+  <h2>Enter ClicknShip details for {{ Auth::user()->name }}</h2>
   <form class="form-horizontal" action="/action_page.php">
     <div class="form-group">
-      <label class="control-label col-sm-2" for="email">Email:</label>
+      <label class="control-label col-sm-2" for="email">Username:</label>
       <div class="col-sm-10">
-        <input type="email" class="form-control" id="email" placeholder="Enter clicknship API username" name="email">
+        <input type="text" class="form-control" id="text" placeholder="Enter clicknship API username" name="username">
       </div>
     </div>
     <div class="form-group">
@@ -20,7 +19,24 @@
         <input type="password" class="form-control" id="pwd" placeholder="Enter ClicknShip API password" name="pwd">
       </div>
     </div>
-    
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="phone">Store Phone Number</label>
+      <div class="col-sm-10">          
+        <input type="number" class="form-control" id="phone" placeholder="Primary Store City" name="phone">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="city">Store City</label>
+      <div class="col-sm-10">          
+        <input type="text" class="form-control" id="city" placeholder="Primary Store City" name="city">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Store Location ID</label>
+      <div class="col-sm-10">          
+        <input type="text" class="form-control" id="locationId" placeholder="Primary Store City" name="LocationId">
+      </div>
+    </div>
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
         <button type="submit" class="btn btn-danger">Submit</button>
