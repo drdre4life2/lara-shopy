@@ -8,7 +8,7 @@
     <p></p>
   <h4>Enter ClicknShip details for {{ Auth::user()->name }}</h2>
   <p></p>
-  <form class="form-horizontal" action="/action_page.php">
+  <form class="form-horizontal" {{url('click-save')}}" method="post">
     <div class="form-group">
       <label class="control-label col-sm-2" for="email">Username:</label>
       <div class="col-sm-10">
@@ -88,9 +88,9 @@
   </select>
    </div>
     <div class="form-group">
-      <label class="control-label col-sm-2" for="pwd">Store Location ID</label>
+      <label class="control-label col-sm-2" for="locationId">Store Location ID</label>
       <div class="col-sm-10">          
-        <input type="text" class="form-control" id="locationId" placeholder="Primary Store City" name="LocationId">
+        <input type="number" class="form-control" id="locationId" placeholder="Primary Store City" name="LocationId">
       </div>
     </div>
     <div class="form-group">        
