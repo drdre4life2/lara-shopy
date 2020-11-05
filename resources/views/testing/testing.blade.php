@@ -1,4 +1,3 @@
-@extends('shopify-app::layouts.default')
 @include('layouts.app')
 
 @section('content')
@@ -7,27 +6,8 @@
     <div class="container">
     <p></p>
   <h4>Enter ClicknShip details for {{ Auth::user()->name }}</h2>
-  <p>
-    
-  </p>
-
-  @if(Session::has('success'))
-    <div class="alert-box success">
-        <h2>{{ Session::get('msg') }}</h2>
-    </div>
-@endif
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+  <p></p>
   <form class="form-horizontal" {{url('click-save')}}" method="post">
-  {{ csrf_field() }}
-
     <div class="form-group">
       <label class="control-label col-sm-2" for="email">Username:</label>
       <div class="col-sm-10">
@@ -123,19 +103,4 @@
     </div>
 @endsection
 
-@section('scripts')
-    @parent
-
-    <script type="text/javascript">
-        var AppBridge = window['app-bridge'];
-        var actions = AppBridge.actions;
-        var TitleBar = actions.TitleBar;
-        var Button = actions.Button;
-        var Redirect = actions.Redirect;
-        var titleBarOptions = {
-            title: 'Welcome',
-        };
-        var myTitleBar = TitleBar.create(app, titleBarOptions);
-    </script>
-@endsection
 

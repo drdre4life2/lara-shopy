@@ -1,19 +1,16 @@
-@extends('shopify-app::layouts.default')
 @include('layouts.app')
 
-@section('content')
 
     <!-- You are: (shop domain name) -->
     <div class="container">
+		<div class="col-md-10">
     <p></p>
-  <h4>Enter ClicknShip details for {{ Auth::user()->name }}</h2>
-  <p>
-    
-  </p>
+  <h4>Enter ClicknShip details for</h2>
+  <p></p>
 
-  @if(Session::has('success'))
-    <div class="alert-box success">
-        <h2>{{ Session::get('msg') }}</h2>
+  @if(Session::has('msg'))
+    <div class="alert-primary" role="alert">
+        <h4>{{ Session::get('msg') }}</h4>
     </div>
 @endif
 @if ($errors->any())
@@ -45,11 +42,12 @@
       <div class="col-sm-10">          
         <input type="number" class="form-control" id="phone" placeholder="Primary Store City" name="phone">
       </div>
-    </div>
-     <div class="form-group">
-     <label for="sel1">Primary Store city:</label>
-     <select class="form-control" id="sel1" name="store_city">
-     <option value="" ></option>
+	</div>
+	
+      <div class="form-group">
+      <label class="control-label col-sm-2" for="sel1">Primary Store city:</label>
+      <select  class="form-control" id="" name="store_city">
+      <option value="" ></option>
 													<option value="Aba" >Aba</option>
 													<option value="Abakaliki" >Abakaliki</option>
 													<option value="Abeokuta" >Abeokuta</option>
@@ -119,23 +117,6 @@
     </div>
   </form>
 </div>
-
     </div>
-@endsection
-
-@section('scripts')
-    @parent
-
-    <script type="text/javascript">
-        var AppBridge = window['app-bridge'];
-        var actions = AppBridge.actions;
-        var TitleBar = actions.TitleBar;
-        var Button = actions.Button;
-        var Redirect = actions.Redirect;
-        var titleBarOptions = {
-            title: 'Welcome',
-        };
-        var myTitleBar = TitleBar.create(app, titleBarOptions);
-    </script>
-@endsection
+    </div>
 

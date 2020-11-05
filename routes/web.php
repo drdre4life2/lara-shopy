@@ -20,4 +20,8 @@ Route::get('/', function () {
     return view('welcome');
 })->middleware(['auth.shopify'])->name('home');
 
-Route::post('click-save', 'ClicknshipController@create');
+
+// Route::get('/save', function () {
+//     return view('dashboard.index');
+// });
+Route::match(['get', 'post'], '/click-save', ['uses' => 'ClicknshipController@create', 'as' => 'dashboard.index']);

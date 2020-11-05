@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Clicknship;
+use Illuminate\Support\Facades\Hash;    
+use Illuminate\Support\Facades\Redirect;
 
 class ClicknshipController extends Controller
 {
@@ -23,7 +26,41 @@ class ClicknshipController extends Controller
      */
     public function create(Request $request)
     {
-        dd($request);
+        if ($request->isMethod('post')) {
+            $data = $request->all();
+           // dd($data);
+            $password = $data['pwd']; // get the value of password field
+
+            // Hash Password
+            //Hash::check('INPUT PASSWORD', $user->password);
+
+            $hashed = Hash::make($password); // encrypt the password
+            
+            $validatedData = $request->validate([
+                'username' => 'required|unique:clicknships',
+                'pwd' => 'required',
+                'phone' => 'required',
+                'store_city' => 'required',
+                'LocationId' => 'required',
+            ]);
+
+            
+            $new =  Clicknship::create([
+                'username'=>$data['username'],
+                'password' => $hashed,
+                'phone' => $data['phone'],
+                'store_city' => $data['store_city'],
+                'locationId' => $data['LocationId'],
+                ]);
+                if($new == true){
+                return Redirect::back()->with('msg', 'Your store details are saved successfully');
+                }else{
+                    return Redirect::back()->with('msg', 'WE already have your records');
+
+                }
+            }else{
+            return view('dashboard.index');
+        }
         //
     }
 
