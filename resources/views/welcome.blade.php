@@ -25,7 +25,7 @@
         </ul>
     </div>
 @endif
-  <form class="form-horizontal" {{url('click-save')}}" method="post">
+<form class="form-horizontal" enctype="multipart/form-data"   action="click-save" method="post">
   {{ csrf_field() }}
 
     <div class="form-group">

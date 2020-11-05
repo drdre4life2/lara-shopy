@@ -24,4 +24,6 @@ Route::get('/', function () {
 // Route::get('/save', function () {
 //     return view('dashboard.index');
 // });
-Route::match(['get', 'post'], '/click-save', ['uses' => 'ClicknshipController@create', 'as' => 'dashboard.index']);
+//Route::post('click-save','ClicknshipController@crate')->name('click-save');
+
+Route::match(['get', 'post'], '/click-save', ['uses' => 'ClicknshipController@create', 'as' => 'click-save']);
