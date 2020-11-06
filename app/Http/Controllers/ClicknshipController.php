@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Clicknship;
 use Illuminate\Support\Facades\Hash;    
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
+
 
 class ClicknshipController extends Controller
 {
@@ -42,17 +44,49 @@ class ClicknshipController extends Controller
                 'phone' => 'required',
                 'store_city' => 'required',
                 'LocationId' => 'required',
+                
             ]);
 
-            
+            // Create new record in the DB
             $new =  Clicknship::create([
                 'username'=>$data['username'],
                 'password' => $hashed,
                 'phone' => $data['phone'],
                 'store_city' => $data['store_city'],
                 'locationId' => $data['LocationId'],
+                'shop_url' => Auth::user(),
                 ]);
                 if($new == true){
+                    //create Carrier
+
+                    $curl = curl_init();
+                    
+                    curl_setopt_array($curl, array(
+                      CURLOPT_URL => "http://post/%20/admin/api/2020-10/carrier_services.json",
+                      CURLOPT_RETURNTRANSFER => true,
+                      CURLOPT_ENCODING => "",
+                      CURLOPT_MAXREDIRS => 10,
+                      CURLOPT_TIMEOUT => 30,
+                      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                      CURLOPT_CUSTOMREQUEST => "POST",
+                      CURLOPT_POSTFIELDS => "{\n  \"carrier_service\": {\n    \"name\": \"ClickNShip\",\n    \"callback_url\": \"http://addartech.com\",\n    \"service_discovery\": true\n  }\n}",
+                      CURLOPT_HTTPHEADER => array(
+                        "cache-control: no-cache",
+                        "content-type: application/json",
+                      ),
+                    ));
+                    
+                    $response = curl_exec($curl);
+                    $err = curl_error($curl);
+                    
+                    curl_close($curl);
+                    
+                    if ($err) {
+                      echo "cURL Error #:" . $err;
+                    } else {
+                      echo $response;
+                    }
+
                 return Redirect::back()->with('msg', 'Your store details are saved successfully');
                 }else{
                     return Redirect::back()->with('msg', 'WE already have your records');
@@ -70,8 +104,10 @@ class ClicknshipController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function CreateClicknship(Request $request)
     {
+
+
         //
     }
 
