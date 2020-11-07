@@ -47,7 +47,9 @@ class ClicknshipController extends Controller
                 
             ]);
            $name= json_decode(Auth::user());
-           $url = $name['name'];
+           $url = $name;
+           dd($url);
+           exit;
             // Create new record in the DB
             $new =  Clicknship::create([
                 'username'=>$data['username'],
