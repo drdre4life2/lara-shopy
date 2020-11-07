@@ -20,23 +20,8 @@ Route::get('/', function () {
     return view('welcome');
 })->middleware(['auth.shopify'])->name('home');
 
-use App\Http\Resources\Carrier;
-use App\User;
-
-Route::post('/user', function () {
-    return Carrier::collection([]);
-});
 
 
-Route::middleware(['first', 'second'])->group(function () {
-    Route::get('/', function () {
-        // Uses first & second middleware...
-    });
-
-    Route::get('user/profile', function () {
-        // Uses first & second middleware...
-    });
-});
 
 // Route::get('/save', function () {
 //     return view('dashboard.index');
