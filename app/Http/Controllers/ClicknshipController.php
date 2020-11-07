@@ -46,7 +46,8 @@ class ClicknshipController extends Controller
                 'LocationId' => 'required',
                 
             ]);
-
+           $name= json_decode(Auth::user());
+           $url = $name['name'];
             // Create new record in the DB
             $new =  Clicknship::create([
                 'username'=>$data['username'],
@@ -54,7 +55,7 @@ class ClicknshipController extends Controller
                 'phone' => $data['phone'],
                 'store_city' => $data['store_city'],
                 'locationId' => $data['LocationId'],
-                'shop_url' => Auth::user(),
+                'shop_url' => $name,
                 ]);
                 if($new == true){
                     //create Carrier
