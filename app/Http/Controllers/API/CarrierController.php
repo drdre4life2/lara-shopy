@@ -42,7 +42,7 @@ class CarrierController extends BaseController
         $name= json_decode(Auth::user());
         $url = $name->name;     //   $user = 
         $user = DB::table('users')->where('name', $url)->first();
-        dd($user);
+      //  dd($user);
         // Calculate shipping
         // if (isset($destination)){
         //         $token = ClicknShipAPI::getToken();
