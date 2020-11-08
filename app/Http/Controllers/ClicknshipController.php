@@ -63,7 +63,7 @@ class ClicknshipController extends Controller
                     $curl = curl_init();
                     
                     curl_setopt_array($curl, array(
-                      CURLOPT_URL => "http://post/%20/admin/api/2020-10/carrier_services.json",
+                      CURLOPT_URL => "http:/$url/admin/api/2020-10/carrier_services.json",
                       CURLOPT_RETURNTRANSFER => true,
                       CURLOPT_ENCODING => "",
                       CURLOPT_MAXREDIRS => 10,
