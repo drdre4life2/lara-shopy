@@ -70,7 +70,8 @@ class ClicknshipController extends Controller
                       CURLOPT_TIMEOUT => 30,
                       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                       CURLOPT_CUSTOMREQUEST => "POST",
-                      CURLOPT_POSTFIELDS => "{\n  \"carrier_service\": {\n    \"name\": \"ClickNShip\",\n    \"callback_url\": \"http://addartech.com\",\n    \"service_discovery\": true\n  }\n}",
+                      CURLOPT_POSTFIELDS => "{\n  \"carrier_service\": {\n    \"name\": \"ClickNShip\",\n   
+                         \"callback_url\": \"http://addartech.com\",\n    \"service_discovery\": true\n  }\n}",
                       CURLOPT_HTTPHEADER => array(
                         "cache-control: no-cache",
                         "content-type: application/json",
@@ -83,11 +84,13 @@ class ClicknshipController extends Controller
                     curl_close($curl);
                     
                     if ($err) {
-                      echo "cURL Error #:" . $err;
+                      dd($err);"cURL Error #:" . $err;
+                      exit;
                     } else {
-                      echo $response;
+                      dd($response);
+                      exit;
                     }
-
+              
                 return Redirect::back()->with('msg', 'Your store details are saved successfully');
                 }else{
                     return Redirect::back()->with('msg', 'WE already have your records');
