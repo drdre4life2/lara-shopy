@@ -85,10 +85,10 @@ class ClicknshipController extends Controller
                     
                     if ($err) {
                       dd($err);"cURL Error #:" . $err;
-                      exit;
+                    //  exit;
                     } else {
                       dd($response);
-                      exit;
+                     // exit;
                     }
               
                 return Redirect::back()->with('msg', 'Your store details are saved successfully');
