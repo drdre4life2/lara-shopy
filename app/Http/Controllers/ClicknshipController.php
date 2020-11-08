@@ -30,7 +30,7 @@ class ClicknshipController extends Controller
     {
         if ($request->isMethod('post')) {
             $data = $request->all();
-           // dd($data);
+            dd($data);
             $password = $data['pwd']; // get the value of password field
 
             // Hash Password
@@ -99,7 +99,7 @@ class ClicknshipController extends Controller
             }else{
 
                // print_r('test');
-            return view('dashboard.index')
+            return view('dashboard.index');
         }
         //
     }
