@@ -84,10 +84,10 @@ class ClicknshipController extends Controller
                     curl_close($curl);
                     
                     if ($err) {
-                      dd($err);"cURL Error #:" . $err;
+                    //  dd($err);"cURL Error #:" . $err;
                     //  exit;
                     } else {
-                      dd($response);
+                     // dd($response);
                      // exit;
                     }
               
@@ -97,6 +97,8 @@ class ClicknshipController extends Controller
 
                 }
             }else{
+
+                print_r('test');
             return view('dashboard.index');
         }
         //
