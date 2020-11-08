@@ -36,7 +36,7 @@ class ClicknshipController extends Controller
             // Hash Password
             //Hash::check('INPUT PASSWORD', $user->password);
 
-            $hashed = Hash::make($password); // encrypt the password
+           // $hashed = Hash::make($password); // encrypt the password
             
             $validatedData = $request->validate([
                 'username' => 'required|unique:clicknships',
@@ -51,7 +51,7 @@ class ClicknshipController extends Controller
             // Create new record in the DB
             $new =  Clicknship::create([
                 'username'=>$data['username'],
-                'password' => $hashed,
+                'password' => $password,
                 'phone' => $data['phone'],
                 'store_city' => $data['store_city'],
                 'locationId' => $data['LocationId'],
