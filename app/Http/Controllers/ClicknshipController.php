@@ -76,7 +76,7 @@ class ClicknshipController extends Controller
                     //create Carrier
                     $shop = Auth::user();
                     $request = $shop->api()->rest('POST', '/admin/api/2020-10/carrier_services.json', ['carrier_service'
-                    =>['name'=>"ClicknShip Shipping","callback_url" => "lara-shopy.herokuapp.com/api/carriers",
+                    =>['name'=>"ClicknShip Shipping","callback_url" => "lara-shopy.herokuapp.com/carrier",
                     "service_discovery" => "true"]
                    ]);
                 dd($request);
