@@ -66,7 +66,7 @@ class CarrierController extends BaseController
               'currency' => 'Naira',
               'total_price' => '1950',
             ];
-        return $this->sendResponse($response, 'Carrier created successfully.');
+        return json_encode($response, JSON_PRETTY_PRINT);
     }
 
 
