@@ -30,6 +30,10 @@ class ClicknshipController extends Controller
     {
         if ($request->isMethod('post')) {
             $data = $request->all();
+            $key = env('SHOPIFY_API_KEY');
+            $pass = env('SHOPIFY_API_SECRET');
+            dd($pass);
+            
            // dd($data);
             $password = $data['pwd']; // get the value of password field
 
@@ -57,9 +61,20 @@ class ClicknshipController extends Controller
                 'locationId' => $data['LocationId'],
                 'shop_url' => $url,
                 ]);
+
+        $params   = array(
+            "carrier_service" =>[
+            "name" => "ClickNShip Shipping",
+            "callback_url" => "lara-shopy.herokuapp.com/api/carriers",
+            "service_discovery" => "true"
+            ]
+        );
+
+        $payload = json_encode($params);
+
                 if($new == true){
                     //create Carrier
-
+                  
                     $curl = curl_init();
                     
                     curl_setopt_array($curl, array(
@@ -70,8 +85,7 @@ class ClicknshipController extends Controller
                       CURLOPT_TIMEOUT => 30,
                       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                       CURLOPT_CUSTOMREQUEST => "POST",
-                      CURLOPT_POSTFIELDS => "{\n  \"carrier_service\": {\n    \"name\": \"ClickNShip\",\n   
-                         \"callback_url\": \"http://addartech.com\",\n    \"service_discovery\": true\n  }\n}",
+                      CURLOPT_POSTFIELDS => $payload,
                       CURLOPT_HTTPHEADER => array(
                         "cache-control: no-cache",
                         "content-type: application/json",
