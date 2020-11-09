@@ -27,5 +27,6 @@ Route::get('/', function () {
 //     return view('dashboard.index');
 // });
 //Route::post('click-save','ClicknshipController@crate')->name('click-save');
+Route::match(['get', 'post'], '/carrier', ['uses' => 'CarrierController@store', 'as' => 'carrier']);
 
 Route::match(['get', 'post'], '/click-save', ['uses' => 'ClicknshipController@create', 'as' => 'click-save']);
