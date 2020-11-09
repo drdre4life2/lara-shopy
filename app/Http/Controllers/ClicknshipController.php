@@ -75,10 +75,11 @@ class ClicknshipController extends Controller
                 if($new == true){
                     //create Carrier
                     $shop = Auth::user();
-                    $request = $shop->api()->rest('GET', '/admin/shop.json');
-                    // $request = $shop->api()->graph('{ shop { name } }');
-                     dd($request['body']);
-                    
+                    $request = $shop->api()->rest('POST', '/admin/api/2020-10/carrier_services.json', ['carrier_service'
+                    =>['name'=>"ClicknShip Shipping"],"callback_url" => "lara-shopy.herokuapp.com/api/carriers",
+                    "service_discovery" => "true"
+                   ]);
+                dd($request);
                 return Redirect::back()->with('msg', 'Your store details are saved successfully');
                 }else{
                     
@@ -86,11 +87,7 @@ class ClicknshipController extends Controller
 
                 }
             }else{
-                $shop = Auth::user();
-                $request = $shop->api()->rest('GET', '/admin/shop.json');
-                // $request = $shop->api()->graph('{ shop { name } }');
-                 dd($request['body']);
-                
+
                // print_r('test');
             return view('dashboard.index');
         }
