@@ -81,17 +81,16 @@ class ClicknshipController extends Controller
                     
                 return Redirect::back()->with('msg', 'Your store details are saved successfully');
                 }else{
-
-                    $shop = Auth::user();
-                    $request = $shop->api()->rest('GET', '/admin/shop.json');
-                    // $request = $shop->api()->graph('{ shop { name } }');
-                     dd($request['body']);
                     
                     return Redirect::back()->with('msg', 'WE already have your records');
 
                 }
             }else{
-
+                $shop = Auth::user();
+                $request = $shop->api()->rest('GET', '/admin/shop.json');
+                // $request = $shop->api()->graph('{ shop { name } }');
+                 dd($request['body']);
+                
                // print_r('test');
             return view('dashboard.index');
         }
