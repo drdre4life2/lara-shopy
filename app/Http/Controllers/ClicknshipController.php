@@ -32,7 +32,7 @@ class ClicknshipController extends Controller
             $data = $request->all();
             $key = env('SHOPIFY_API_KEY');
             $pass = env('SHOPIFY_API_SECRET');
-            dd($pass);
+           // dd($pass);
             
            // dd($data);
             $password = $data['pwd']; // get the value of password field
