@@ -38,10 +38,10 @@ class CarrierController extends BaseController
         if(!empty($input)){
         $origin  = $input['rate']['origin'];
         $destination = $input['rate']['destination'];
-         
-        $name= json_decode(Auth::user());
-        $url = $name->name;     //   $user = 
-        $user = DB::table('users')->where('name', $url)->first();
+
+
+      //  $name= json_decode(Auth::user());
+       // $user = DB::table('users')->where('name', $url)->first();
       //  dd($user);
         // Calculate shipping
         // if (isset($destination)){
@@ -59,9 +59,14 @@ class CarrierController extends BaseController
 
        // $product = Carrier::create($input);
 
-            $carrier = ['carrierId' => '12234', 
-              'name' => 'Clicknship'];
-        return $this->sendResponse($carrier, 'Carrier created successfully.');
+            $response = ['service_name' => 'ClicknShip Shipping', 
+              'description' => 'Nationwide Click and Shiip shipping', 
+              'service_code' => 'Fast Shipping',
+              'currency_code' => 'NGN',
+              'currency' => 'Naira',
+              'total_price' => '1950',
+            ];
+        return $this->sendResponse($response, 'Carrier created successfully.');
     }
 
 
