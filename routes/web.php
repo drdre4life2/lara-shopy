@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClicknshipController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,12 +22,15 @@ Route::get('/', function () {
 })->middleware(['auth.shopify'])->name('home');
 
 
-
+Route::group(['middleware' => 'auth.shopify'], function () {
+    Route::get('/dashboard', 'ClicknshipController@index');
+    //add more Routes here
+});
 
 // Route::get('/save', function () {
 //     return view('dashboard.index');
 // });
 //Route::post('click-save','ClicknshipController@crate')->name('click-save');
 Route::match(['get', 'post'], '/carrier', ['uses' => 'CarrierController@store', 'as' => 'carrier']);
-
+Route::get('/dashboard' ,'ClicknshipController@index');
 Route::match(['get', 'post'], '/click-save', ['uses' => 'ClicknshipController@create', 'as' => 'click-save']);

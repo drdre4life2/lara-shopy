@@ -6,7 +6,7 @@
     <!-- You are: (shop domain name) -->
     <div class="container">
     <p></p>
-  <h4>Enter ClicknShip details for {{ Auth::user()->name }}</h2>
+  <!--<h4>Enter ClicknShip details for {{ Auth::user()->name }}</h2>!-->
   <p>
     
   </p>
@@ -25,102 +25,60 @@
         </ul>
     </div>
 @endif
-<form class="form-horizontal" enctype="multipart/form-data"   action="click-save" method="post">
-  {{ csrf_field() }}
 
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="email">Username:</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="text" placeholder="Enter clicknship API username" name="username">
-      </div>
+  
+<div class="container">
+
+<!-- Static navbar -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Project name</a>
     </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="pwd">Password:</label>
-      <div class="col-sm-10">          
-        <input type="password" class="form-control" id="pwd" placeholder="Enter ClicknShip API password" name="pwd">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="phone">Store Phone Number</label>
-      <div class="col-sm-10">          
-        <input type="number" class="form-control" id="phone" placeholder="Primary Store City" name="phone">
-      </div>
-    </div>
-     <div class="form-group">
-     <label for="sel1">Primary Store city:</label>
-     <select class="form-control" id="sel1" name="store_city">
-     <option value="" ></option>
-													<option value="Aba" >Aba</option>
-													<option value="Abakaliki" >Abakaliki</option>
-													<option value="Abeokuta" >Abeokuta</option>
-													<option value="Abuja" >Abuja</option>
-													<option value="Ado Ekiti" >Ado Ekiti</option>
-													<option value="Akure" >Akure</option>
-													<option value="Asaba" >Asaba</option>
-													<option value="Awka" >Awka</option>
-													<option value="Bauchi" >Bauchi</option>
-													<option value="Benin" >Benin</option>
-													<option value="Birnin Kebbi" >Birnin Kebbi</option>
-													<option value="Bonny" >Bonny</option>
-													<option value="Calabar" >Calabar</option>
-													<option value="Damaturu" >Damaturu</option>
-													<option value="Dutse" >Dutse</option>
-													<option value="Eket" >Eket</option>
-													<option value="Gombe" >Gombe</option>
-													<option value="Gusau" >Gusau</option>
-													<option value="Ibadan"  selected='selected'>Ibadan</option>
-													<option value="Ijebu Ode" >Ijebu Ode</option>
-													<option value="Ikot Ekpene" >Ikot Ekpene</option>
-													<option value="Ile-ife" >Ile-ife</option>
-													<option value="Ilorin" >Ilorin</option>
-													<option value="Jalingo" >Jalingo</option>
-													<option value="Jos" >Jos</option>
-													<option value="Kaduna" >Kaduna</option>
-													<option value="Kano" >Kano</option>
-													<option value="Kastina" >Kastina</option>
-													<option value="Lafia" >Lafia</option>
-													<option value="Lagos Island" >Lagos Island</option>
-													<option value="Lokoja" >Lokoja</option>
-													<option value="Maiduguri" >Maiduguri</option>
-													<option value="Mainland" >Mainland</option>
-													<option value="Makurdi" >Makurdi</option>
-													<option value="Minna" >Minna</option>
-													<option value="Nnewi" >Nnewi</option>
-													<option value="Nsukka" >Nsukka</option>
-													<option value="Ofa" >Ofa</option>
-													<option value="Ogbomosho" >Ogbomosho</option>
-													<option value="Onitsha" >Onitsha</option>
-													<option value="Oshogbo" >Oshogbo</option>
-													<option value="Owerri" >Owerri</option>
-													<option value="Oyo" >Oyo</option>
-													<option value="Port Harcourt" >Port Harcourt</option>
-													<option value="Sagamu" >Sagamu</option>
-													<option value="Sapele" >Sapele</option>
-													<option value="Sokoto" >Sokoto</option>
-													<option value="Suleja" >Suleja</option>
-													<option value="Umuahia" >Umuahia</option>
-													<option value="Uyo" >Uyo</option>
-													<option value="Warri" >Warri</option>
-													<option value="Yenagoa" >Yenagoa</option>
-													<option value="Yola" >Yola</option>
-													<option value="Zaria" >Zaria</option>
-  </select>
-   </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="locationId">Store Location ID</label>
-      <div class="col-sm-10">          
-        <input type="number" class="form-control" id="locationId" placeholder="Primary Store City" name="LocationId">
-      </div>
-    </div>
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-danger">Submit</button>
-      </div>
-    </div>
-  </form>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">Nav header</li>
+            <li><a href="#">Separated link</a></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
+        <li><a href="../navbar-static-top/">Static top</a></li>
+        <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container-fluid -->
+</nav>
+
+<!-- Main component for a primary marketing message or call to action -->
+<div class="jumbotron">
+  <h1>Navbar example</h1>
+  <p>This example is a quick exercise to illustrate how the default, static navbar and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+  <p>
+    <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
+  </p>
 </div>
 
-    </div>
+</div> <!-- /container -->
+
 @endsection
 @section('scripts')
     @parent
