@@ -10,6 +10,7 @@ use App\Carrier;
 use APP\Helper\ClicknShipAPI;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 class CarrierController extends BaseController
 {
     /**
@@ -34,6 +35,14 @@ class CarrierController extends BaseController
      */
     public function store(Request $request)
     {
+
+
+        $method = strtoupper($request->getMethod());
+        $uri = $request->getPathInfo();
+        $bodyAsJson = json_encode($request->except(config('http-logger.except')));
+        $message = "{$method} {$uri} - {$bodyAsJson}";
+        Log::info($message);
+        
         $input = $request->all();
         if(!empty($input)){
         $origin  = $input['rate']['origin'];

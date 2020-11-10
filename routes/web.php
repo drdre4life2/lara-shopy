@@ -21,10 +21,17 @@ Route::get('/', function () {
     return view('welcome');
 })->middleware(['auth.shopify'])->name('home');
 
+
+Route::group(['middleware' => '\Spatie\HttpLogger\Middlewares\HttpLogger::class'], function () {
+    Route::get('/dashboard', 'ClicknshipController@index');
+    Route::match(['get', 'post'], '/click-save', ['uses' => 'ClicknshipController@create', 'as' => 'click-save']);
+    Route::match(['get', 'post'], '/carrier', ['uses' => 'CarrierController@store', 'as' => 'carrier']);
+
+    //add more Routes here
+});
+
 // Route::get('/save', function () {
 //     return view('dashboard.index');
 // });
 //Route::post('click-save','ClicknshipController@crate')->name('click-save');
-Route::match(['get', 'post'], '/carrier', ['uses' => 'CarrierController@store', 'as' => 'carrier']);
-Route::get('/dashboard' ,'ClicknshipController@index');
-Route::match(['get', 'post'], '/click-save', ['uses' => 'ClicknshipController@create', 'as' => 'click-save']);
+//Route::get('/dashboard' ,'ClicknshipController@index');

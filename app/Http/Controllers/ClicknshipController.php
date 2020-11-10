@@ -7,7 +7,7 @@ use App\Clicknship;
 use Illuminate\Support\Facades\Hash;    
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Log;
 
 class ClicknshipController extends Controller
 {
@@ -21,6 +21,10 @@ class ClicknshipController extends Controller
     return view('dashboard.dashboard');
     }
 
+    public function logRequest(Request $request): void
+    {
+    }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -29,6 +33,7 @@ class ClicknshipController extends Controller
     public function create(Request $request)
     {
         if ($request->isMethod('post')) {
+ 
             $data = $request->all();
             $key = env('SHOPIFY_API_KEY');
             $pass = env('SHOPIFY_API_SECRET');
