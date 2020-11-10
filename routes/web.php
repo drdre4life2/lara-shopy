@@ -21,12 +21,6 @@ Route::get('/', function () {
     return view('welcome');
 })->middleware(['auth.shopify'])->name('home');
 
-
-Route::group(['middleware' => 'auth.shopify'], function () {
-    Route::get('/dashboard', 'ClicknshipController@index');
-    //add more Routes here
-});
-
 // Route::get('/save', function () {
 //     return view('dashboard.index');
 // });
