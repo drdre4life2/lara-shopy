@@ -18,12 +18,12 @@ class CarrierController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function privacy()
     {
         $Carriers = Carrier::all();
 
 
-        return $this->sendResponse($Carriers->toArray(), 'Carriers retrieved successfully.');
+        return view('dashboard.privacy');
     }
 
 

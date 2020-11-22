@@ -26,6 +26,7 @@ Route::group(['middleware' => '\Spatie\HttpLogger\Middlewares\HttpLogger::class'
     Route::get('/dashboard', 'ClicknshipController@index');
     Route::match(['get', 'post'], '/click-save', ['uses' => 'ClicknshipController@create', 'as' => 'click-save']);
     Route::match(['get', 'post'], '/carrier', ['uses' => 'CarrierController@store', 'as' => 'carrier']);
+    Route::match(['get', 'post'], '/privacy', ['uses' => 'CarrierController@privacy', 'as' => 'privacy']);
 
     //add more Routes here
 });
