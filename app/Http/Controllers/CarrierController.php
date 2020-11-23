@@ -20,8 +20,6 @@ class CarrierController extends BaseController
      */
     public function privacy()
     {
-        $Carriers = Carrier::all();
-
 
         return view('dashboard.privacy');
     }
@@ -143,5 +141,28 @@ class CarrierController extends BaseController
 
 
         return $this->sendResponse($carrier->toArray(), 'Carrier deleted successfully.');
+    }
+
+    public function customerRedact(Request $request)
+    {
+
+     $response = [200, 'ok'];
+        return json_encode($response, JSON_PRETTY_PRINT);
+
+    }
+
+    public function shopRedact(Request $request)
+    {
+
+     $response = [200, 'ok'];
+        return json_encode($response, JSON_PRETTY_PRINT);
+
+    }
+    public function dataRequest(Request $request)
+    {
+
+     $response = [200, 'ok'];
+        return json_encode($response, JSON_PRETTY_PRINT);
+
     }
 }
