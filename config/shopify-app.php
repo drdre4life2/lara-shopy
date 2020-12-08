@@ -9,7 +9,7 @@ return [
     | (Not yet complete) A verbose logged output of processes
     |
     */
-    'debug' => (bool) env('SHOPIFY_DEBUG', false),
+    'debug' => (bool) env('SHOPIFY_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
