@@ -84,7 +84,6 @@ class ClicknshipController extends Controller
                     =>["name"=>"ClicknShip Shipping", "callback_url" => "http://lara-shopy.herokuapp.com/carrier",
                     "service_discovery"=> "true"]
                    ]);
-                dd($request);
                 return Redirect::back()->with('msg', 'Your store details are saved successfully');
                 }else{
                     

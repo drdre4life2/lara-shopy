@@ -99,7 +99,7 @@ return [
     |
     */
 
-    'app_name' => env('SHOPIFY_APP_NAME', 'click-shopy'),
+    'app_name' => env('SHOPIFY_APP_NAME', 'ClicknShip'),
 
     /*
     |--------------------------------------------------------------------------

@@ -9,7 +9,7 @@
   <h1>ClicknShip</h1>
   <p>Click & Ship is an integrated application powered by RS Allied Solutions limited, a subsidiary of Red Star Express Plc. Designed primarily for E-commerce operations, efficient and effective transaction management, visibility and payment reconciliations.</p>
   <p>
-    <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View clicnship websie for more &raquo;</a>
+    <a class="btn btn-lg btn-primary" href="www.clicknship.com.ng" role="button">View clicnship websie to start &raquo;</a>
   </p>
 </div>
 
