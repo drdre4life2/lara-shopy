@@ -9,7 +9,7 @@ return [
     | (Not yet complete) A verbose logged output of processes
     |
     */
-    'debug' => (bool) env('SHOPIFY_DEBUG', true),
+    'debug' => (bool) env('SHOPIFY_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -285,6 +285,8 @@ return [
             ],
             ...
         */
+
+        
     ],
 
     /*
@@ -305,6 +307,10 @@ return [
             ],
             ...
         */
+        [
+        'topic' => env('SHOPIFY_WEBHOOK_1_TOPIC', 'app/uninstalled'),
+            'address' => env('SHOPIFY_WEBHOOK_1_ADDRESS', 'https://lara-shopy.herokuapp.com//webhook/app-uninstalled')
+        ]
     ],
 
     /*
