@@ -286,7 +286,10 @@ return [
             ...
         */
 
-        
+        [
+            'topic' => env('SHOPIFY_WEBHOOK_1_TOPIC', 'app/uninstalled'),
+                'address' => env('SHOPIFY_WEBHOOK_1_ADDRESS', 'https://lara-shopy.herokuapp.com//webhook/app-uninstalled')
+            ]
     ],
 
     /*
@@ -307,10 +310,7 @@ return [
             ],
             ...
         */
-        [
-        'topic' => env('SHOPIFY_WEBHOOK_1_TOPIC', 'app/uninstalled'),
-            'address' => env('SHOPIFY_WEBHOOK_1_ADDRESS', 'https://lara-shopy.herokuapp.com//webhook/app-uninstalled')
-        ]
+       
     ],
 
     /*
