@@ -6,10 +6,9 @@
     <div class="container">
 <!-- Main component for a primary marketing message or call to action -->
 <div class="jumbotron">
-  <h1>ClicknShip</h1>
+  <h1>Welcom {{ Auth::user()->name }}</h1>
   <p>Click & Ship is an integrated application powered by RS Allied Solutions limited, a subsidiary of Red Star Express Plc. Designed primarily for E-commerce operations, efficient and effective transaction management, visibility and payment reconciliations.</p>
-  <p>
-    <a class="btn btn-lg btn-primary" href="www.clicknship.com.ng" role="button">View clicnship websie to start &raquo;</a>
+  <p>To begin, visit www.clicknship.com.ng</p>
   </p>
 </div>
 
