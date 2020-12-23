@@ -30,6 +30,7 @@ Route::group(['middleware' => '\Spatie\HttpLogger\Middlewares\HttpLogger::class'
     Route::match(['get', 'post'], '/customers/redact', ['uses' => 'CarrierController@customerRedact', 'as' => 'redact']);
     Route::match(['get', 'post'], 'shop/redact', ['uses' => 'CarrierController@shopRedact', 'as' => 'shop/redact']);
     Route::match(['get', 'post'], 'customers/data_request', ['uses' => 'CarrierController@dataRequest', 'as' => 'data_request']);
+    Route::get('confirm', 'ClicknshipController@confirm');
 
     //add more Routes here
 });

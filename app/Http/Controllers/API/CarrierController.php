@@ -101,7 +101,6 @@ class CarrierController extends BaseController
     {
         $input = $request->all();
 
-
         $validator = $request->validate($input, [
             'name' => 'required',
             'detail' => 'required'

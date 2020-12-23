@@ -56,7 +56,7 @@ class ClicknshipController extends Controller
                 
             ]);
            $name= json_decode(Auth::user());
-           $url = $name->name;
+           //$url = $name->name;
             // Create new record in the DB
             $new =  Clicknship::create([
                 'username'=>$data['username'],
@@ -64,7 +64,7 @@ class ClicknshipController extends Controller
                 'phone' => $data['phone'],
                 'store_city' => $data['store_city'],
                 'locationId' => $data['LocationId'],
-                'shop_url' => $url,
+                'shop_url' => 'ggh',
                 ]);
 
         $params   = array(
@@ -79,12 +79,13 @@ class ClicknshipController extends Controller
 
                 if($new == true){
                     //create Carrier
-                    $shop = Auth::user();
-                    $request = $shop->api()->rest('POST', '/admin/api/2020-10/carrier_services.json', ["carrier_service"
-                    =>["name"=>"ClicknShip Shipping", "callback_url" => "http://lara-shopy.herokuapp.com/carrier",
-                    "service_discovery"=> "true"]
-                   ]);
-                return view('dashboard.confirm');
+                //     $shop = Auth::user();
+                //     $request = $shop->api()->rest('POST', '/admin/api/2020-10/carrier_services.json', ["carrier_service"
+                //     =>["name"=>"ClicknShip Shipping", "callback_url" => "http://lara-shopy.herokuapp.com/carrier",
+                //     "service_discovery"=> "true"]
+                //    ]);
+                   return redirect()->route('confirm');
+
                 }else{
                     
                     return Redirect::back()->with('msg', 'We already have your records');
@@ -104,9 +105,9 @@ class ClicknshipController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function CreateClicknship(Request $request)
+    public function Confirm(Request $request)
     {
-
+        return view('dashboard.confirm');
 
         //
     }
