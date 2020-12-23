@@ -1,5 +1,6 @@
 
 @include('layouts.app')
+@section('content')
 
 <div class="jumbotron text-center">
   <h1 class="display-3">Thank You!</h1>
@@ -12,3 +13,4 @@
     <a class="btn btn-primary btn-sm" href="{{ url('home') }}" role="button">Continue to homepage</a>
   </p>
 </div>
+@endsection
