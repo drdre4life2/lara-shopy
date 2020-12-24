@@ -23,9 +23,9 @@
       <li class="nav-item">
         <a class="nav-link" href="/click-save">My settings</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="http://clicknship.com.ng">Visit clicknship</a>
-      </li>
+      </li> -->
   
     </ul>
   </div>
