@@ -78,12 +78,12 @@ class ClicknshipController extends Controller
         $payload = json_encode($params);
 
                 if($new == true){
-                    //create Carrier
-                //     $shop = Auth::user();
-                //     $request = $shop->api()->rest('POST', '/admin/api/2020-10/carrier_services.json', ["carrier_service"
-                //     =>["name"=>"ClicknShip Shipping", "callback_url" => "http://lara-shopy.herokuapp.com/carrier",
-                //     "service_discovery"=> "true"]
-                //    ]);
+                //    create Carrier
+                    $shop = Auth::user();
+                    $request = $shop->api()->rest('POST', '/admin/api/2020-10/carrier_services.json', ["carrier_service"
+                    =>["name"=>"ClicknShip Shipping", "callback_url" => "http://lara-shopy.herokuapp.com/carrier",
+                    "service_discovery"=> "true"]
+                   ]);
                    return redirect()->route('confirm');
 
                 }else{
