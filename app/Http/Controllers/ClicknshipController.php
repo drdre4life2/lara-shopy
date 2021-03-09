@@ -76,7 +76,6 @@ class ClicknshipController extends Controller
         );
 
         $payload = json_encode($params);
-
                 if($new == true){
                 //    create Carrier
                     $shop = Auth::user();
