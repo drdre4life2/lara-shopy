@@ -78,12 +78,41 @@ class ClicknshipController extends Controller
         $payload = json_encode($params);
                 if($new == true){
                 //    create Carrier
-                    $shop = Auth::user();
-                    dd($shop);
-                    $request = $shop->api()->rest('POST', '/admin/api/2021-01/carrier_services.json', ["carrier_service"
-                    =>["name"=>"ClicknShip Shipping", "callback_url" => "http://lara-shopy.herokuapp.com/carrier",
-                    "service_discovery"=> "true"]
-                   ]);
+                //     $shop = Auth::user();
+                //     $request = $shop->api()->rest('POST', '/admin/api/2021-01/carrier_services.json', ["carrier_service"
+                //     =>["name"=>"ClicknShip Shipping", "callback_url" => "http://lara-shopy.herokuapp.com/carrier",
+                //     "service_discovery"=> "true"]
+                //    ]);
+
+
+                   $curl = curl_init();
+                   dd($shop['name']);
+                   curl_setopt_array($curl, array(
+                     CURLOPT_URL => "https://techstests.myshopify.com/admin/api/2021-01/carrier_services.json",
+                     CURLOPT_RETURNTRANSFER => true,
+                     CURLOPT_ENCODING => "",
+                     CURLOPT_MAXREDIRS => 10,
+                     CURLOPT_TIMEOUT => 30,
+                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                     CURLOPT_CUSTOMREQUEST => "POST",
+                     CURLOPT_POSTFIELDS => "\n{\n\"carrier_service\": {\n    \"name\": \"Shipping Rate Provider\",\n    \"callback_url\": \"http://shippingrateprovider.com\",\n    \"service_discovery\": true\n  }\n}",
+                     CURLOPT_HTTPHEADER => array(
+                       "cache-control: no-cache",
+                       "content-type: application/json",
+                       "postman-token: a4261248-49f0-e251-16b2-910794b75fda"
+                     ),
+                   ));
+                   
+                   $response = curl_exec($curl);
+                   $err = curl_error($curl);
+                   
+                   curl_close($curl);
+                   
+                   if ($err) {
+                     echo "cURL Error #:" . $err;
+                   } else {
+                     echo $response;
+                   }
 
                    
                    return redirect()->route('confirm');
