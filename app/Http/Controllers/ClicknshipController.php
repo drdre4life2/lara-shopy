@@ -86,7 +86,7 @@ class ClicknshipController extends Controller
 
 
                    $curl = curl_init();
-                   dd($shop['name']);
+                  // dd($shop['name']);
                    curl_setopt_array($curl, array(
                      CURLOPT_URL => "https://techstests.myshopify.com/admin/api/2021-01/carrier_services.json",
                      CURLOPT_RETURNTRANSFER => true,
@@ -95,11 +95,12 @@ class ClicknshipController extends Controller
                      CURLOPT_TIMEOUT => 30,
                      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                      CURLOPT_CUSTOMREQUEST => "POST",
-                     CURLOPT_POSTFIELDS => "\n{\n\"carrier_service\": {\n    \"name\": \"Shipping Rate Provider\",\n    \"callback_url\": \"http://shippingrateprovider.com\",\n    \"service_discovery\": true\n  }\n}",
+                     CURLOPT_POSTFIELDS => "\n{\n\"carrier_service\": {\n    \"name\":
+                         \"Clicknship Rate Provider\",\n    \"callback_url\":
+                          \"http://lara-shopy.herokuapp.com/carrier\",\n    \"service_discovery\": true\n  }\n}",
                      CURLOPT_HTTPHEADER => array(
                        "cache-control: no-cache",
-                       "content-type: application/json",
-                       "postman-token: a4261248-49f0-e251-16b2-910794b75fda"
+                       "content-type: application/json"
                      ),
                    ));
                    
