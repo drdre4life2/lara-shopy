@@ -110,9 +110,9 @@ class ClicknshipController extends Controller
                    curl_close($curl);
                    
                    if ($err) {
-                     echo "cURL Error #:" . $err;
+                     dd($err);
                    } else {
-                     echo $response;
+                      dd($response);
                    }
 
                    
