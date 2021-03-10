@@ -83,43 +83,12 @@ class ClicknshipController extends Controller
                 // $request = $shop->api()->rest('GET', '/admin/shop.json');
                 // // $request = $shop->api()->graph('{ shop { name } }');
                 // dd($request['body']['shop']['name']);
+
                 $shop = Auth::user();
                     $request = $shop->api()->rest('POST', '/admin/api/2021-01/carrier_services.json', ["carrier_service"
                     =>["name"=>"ClicknShip Shipping", "callback_url" => "http://lara-shopy.herokuapp.com/carrier",
                     "service_discovery"=> "true"]
                    ]);
-
-
-                $curl = curl_init();
-                // dd($shop['name']);
-                curl_setopt_array($curl, array(
-                    CURLOPT_URL => "https://techstests.myshopify.com/admin/api/2021-01/carrier_services.json",
-                    CURLOPT_RETURNTRANSFER => true,
-                    CURLOPT_ENCODING => "",
-                    CURLOPT_MAXREDIRS => 10,
-                    CURLOPT_TIMEOUT => 30,
-                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                    CURLOPT_CUSTOMREQUEST => "POST",
-                    CURLOPT_POSTFIELDS => "\n{\n\"carrier_service\": {\n    \"name\":
-                         \"Clicknship Rate Provider\",\n    \"callback_url\":
-                          \"http://lara-shopy.herokuapp.com/carrier\",\n    \"service_discovery\": true\n  }\n}",
-                    CURLOPT_HTTPHEADER => array(
-                        "cache-control: no-cache",
-                        "content-type: application/json"
-                    ),
-                ));
-
-                $response = curl_exec($curl);
-                $err = curl_error($curl);
-
-                curl_close($curl);
-
-                if ($err) {
-                    dd($err);
-                } else {
-                    dd($response);
-                }
-
 
                 return redirect()->route('confirm');
             } else {
