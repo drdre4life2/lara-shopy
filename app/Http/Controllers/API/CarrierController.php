@@ -10,6 +10,7 @@ use App\Carrier;
 use APP\Helper\ClicknShipAPI;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+
 class CarrierController extends BaseController
 {
     /**
@@ -35,21 +36,20 @@ class CarrierController extends BaseController
     public function store(Request $request)
     {
         $input = $request->all();
-        if(!empty($input)){
-        $origin  = $input['rate']['origin'];
-        $destination = $input['rate']['destination'];
-
-
-      //  $name= json_decode(Auth::user());
-       // $user = DB::table('users')->where('name', $url)->first();
-      //  dd($user);
-        // Calculate shipping
-        // if (isset($destination)){
-        //         $token = ClicknShipAPI::getToken();
-        // }
+        if (!empty($input)) {
+            $origin  = $input['rate']['origin'];
+            $destination = $input['rate']['destination'];
+            print $destination;
+            //  $name= json_decode(Auth::user());
+            // $user = DB::table('users')->where('name', $url)->first();
+            //  dd($user);
+            // Calculate shipping
+            // if (isset($destination)){
+            //         $token = ClicknShipAPI::getToken();
+            // }
         }
-       //exit;
-     /*   $validator = $request->validate($input, [
+        //exit;
+        /*   $validator = $request->validate($input, [
          'carrierId' => 'required',
             'name' => 'required'
         ]);
@@ -57,16 +57,22 @@ class CarrierController extends BaseController
 
 
 
-       // $product = Carrier::create($input);
+        // $product = Carrier::create($input);
 
-            $response = ['service_name' => 'ClicknShip Shipping', 
-              'description' => 'Nationwide Click and Shiip shipping', 
-              'service_code' => 'Fast Shipping',
-              'currency_code' => 'NGN',
-              'currency' => 'Naira',
-              'total_price' => '1950',
-            ];
-        return $this->sendResponse($response, 'Carrier created successfully.');
+    
+
+
+
+
+        // $response = [
+        //     'service_name' => 'ClicknShip Shipping',
+        //     'description' => 'Nationwide Click and Ship shipping',
+        //     'service_code' => 'Normal Shipping',
+        //     'currency_code' => 'NGN',
+        //     'currency' => 'Naira',
+        //     'total_price' => '2950',
+        // ];
+        // return $this->sendResponse($response, 'Cost calculated successfully.');
     }
 
 
