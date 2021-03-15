@@ -18,8 +18,6 @@ class ClicknshipController extends Controller
      */
     public function index()
     {
-        $shop = Auth::user();
-        dd($shop->getDomain()->toNative());
         return view('dashboard.dashboard');
     }
 
@@ -99,6 +97,9 @@ class ClicknshipController extends Controller
             }
         } else {
 
+            $shop = Auth::user();
+
+            dd($shop->getDomain()->toNative());
             // print_r('test');
             return view('dashboard.index');
         }
