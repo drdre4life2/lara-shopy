@@ -18,6 +18,8 @@ class ClicknshipController extends Controller
      */
     public function index()
     {
+        $shop = Auth::user();
+        dd($shop->getDomain()->toNative());
         return view('dashboard.dashboard');
     }
 

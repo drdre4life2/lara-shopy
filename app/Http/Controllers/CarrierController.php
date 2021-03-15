@@ -7,10 +7,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
 use App\Carrier;
-use APP\Helper\ClicknShipAPI;
+use  App\Helper\ClicknShipAPI;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+
 class CarrierController extends BaseController
 {
     /**
@@ -40,7 +41,12 @@ class CarrierController extends BaseController
         $bodyAsJson = json_encode($request->except(config('http-logger.except')));
         $message = "{$method} {$uri} - {$bodyAsJson}";
         Log::info($message);
-        
+
+        $shop = Auth::user();
+        $user = DB::table('clicknships')->where('shop_url', '')->first();
+
+
+        // $token = ClicknShipAPI::getToken();
         $input = json_encode($request->all());
         if(!empty($input)){
         //$origin  = $input['rate']['origin'];
