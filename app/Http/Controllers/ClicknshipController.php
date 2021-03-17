@@ -35,55 +35,35 @@ class ClicknshipController extends Controller
         if ($request->isMethod('post')) {
 
             $data = $request->all();
-            $key = env('SHOPIFY_API_KEY');
-            $pass = env('SHOPIFY_API_SECRET');
-            // dd($pass);
-
-            // dd($data);
             $password = $data['pwd']; // get the value of password field
-
-            // Hash Password
-            //Hash::check('INPUT PASSWORD', $user->password);
-
-            // $hashed = Hash::make($password); // encrypt the password
-
             $validatedData = $request->validate([
                 'username' => 'required|unique:clicknships',
                 'pwd' => 'required',
                 'phone' => 'required',
                 'store_city' => 'required',
                 'LocationId' => 'required',
-
             ]);
             $name = json_decode(Auth::user());
-            //$url = $name->name;
-            // Create new record in the DB
-            $new =  Clicknship::create([
-                'username' => $data['username'],
-                'password' => $password,
-                'phone' => $data['phone'],
-                'store_city' => $data['store_city'],
-                'locationId' => $data['LocationId'],
-                'shop_url' => 'ggh',
-            ]);
+            //$test_url = 'ggh';
+            $shop_url = $shop->getDomain()->toNative();
+            $url = DB::table('clicknships')->where('shop_url', $shop_url)->first();
 
-            $params   = array(
-                "carrier_service" => [
-                    "name" => "ClickNShip Shipping",
-                    "callback_url" => "lara-shopy.herokuapp.com/api/carriers",
-                    "service_discovery" => "true"
-                ]
-            );
+            // Check if shop Url already exist before creating ne records
+            if(is_null($url)){
+                $new =  Clicknship::create([
+                    'username' => $data['username'],
+                    'password' => $password,
+                    'phone' => $data['phone'],
+                    'store_city' => $data['store_city'],
+                    'locationId' => $data['LocationId'],
+                    'shop_url' => $shop_url,
+                ]);
+            }else{
+                return Redirect::back()->with('msg', 'We already have your records');
 
-            $payload = json_encode($params);
+            }
             if ($new == true) {
                 //    create Carrier
-
-                $shop = Auth::user();
-                // $request = $shop->api()->rest('GET', '/admin/shop.json');
-                // // $request = $shop->api()->graph('{ shop { name } }');
-                // dd($request['body']['shop']['name']);
-
                 $shop = Auth::user();
                     $request = $shop->api()->rest('POST', '/admin/api/2021-01/carrier_services.json', ["carrier_service"
                     =>["name"=>"ClicknShip Shipping", "callback_url" => "http://lara-shopy.herokuapp.com/carrier",
@@ -98,8 +78,6 @@ class ClicknshipController extends Controller
         } else {
 
             $shop = Auth::user();
-
-            dd($shop->getDomain()->toNative());
             // print_r('test');
             return view('dashboard.index');
         }

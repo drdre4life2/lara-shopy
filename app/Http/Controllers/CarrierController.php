@@ -43,14 +43,21 @@ class CarrierController extends BaseController
         Log::info($message);
 
         $shop = Auth::user();
-        $user = DB::table('clicknships')->where('shop_url', '')->first();
+        //$shop_url = $shop->getDomain()->toNative();
+        $shop_url = 'ggh';
 
-
-        // $token = ClicknShipAPI::getToken();
+        $shop = DB::table('clicknships')->where('shop_url', $shop_url)->first();
+        $token = ClicknShipAPI::getToken($shop->username, $shop->password);
+        $token = json_encode($token, true);
+        $token = json_decode($token, true);
+       // $token = $token;
+        $token = $token['access_token'];
         $input = json_encode($request->all());
         if(!empty($input)){
-        //$origin  = $input['rate']['origin'];
-       // $destination = $input['rate']['destination'];
+        $origin  = $request->all();
+        $city = $origin['rate']['origin']['city'];
+        $destination = $origin['rate']['destination']['city'];
+        
     // log the raw request -- this makes debugging much easier
     $filename = time();
     // $input = file_get_contents('php://input');
@@ -70,6 +77,21 @@ class CarrierController extends BaseController
          $quantity = +$item['quantity'];
      }
 
+     $weight = 0;
+     foreach ($rates['rate']['items'] as $item) {
+         $weight = +$item['grams'];
+     }
+    $weight  = $weight/1000;
+    $shippin_details = ['origin' => $city,'destination' =>$destination,
+      'token' =>$token,
+     'weight' =>$weight
+    ];
+     $cost = ClicknShipAPI::calculateDeliveryFee($shippin_details);
+    // print_r($shippin_details);
+
+    //return amount to shopify in kobo
+     $final_cost = $cost[0]->TotalAmount * 100;
+     //exit;
      // use number_format because shopify api expects the price to be "25.00" instead of just "25"
 
      // overnight shipping is 5.50 per item
@@ -88,21 +110,14 @@ class CarrierController extends BaseController
      // build the array of line items using the prior values
      $output = array('rates' => array(
          array(
-             'service_name' => 'Clicknship Overnight',
-             'service_code' => 'ETON',
-             'total_price' => $overnight_cost,
+             'service_name' => 'Clicknship Shipping',
+             'service_code' => 'Regular',
+             'total_price' => $final_cost,
              'currency' => 'NGN',
-             'min_delivery_date' => $on_min_date,
-             'max_delivery_date' => $on_max_date
-         ),
-         array(
-             'service_name' => 'Clicknship Regular',
-             'service_code' => 'ETREG',
-             'total_price' => $regular_cost,
-             'currency' => 'NGN',
-             'min_delivery_date' => $reg_min_date,
-             'max_delivery_date' => $reg_max_date
+             'min_delivery_date' => '',
+             'max_delivery_date' => ''
          )
+         
      ));
 
      // encode into a json response
