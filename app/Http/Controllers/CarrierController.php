@@ -47,6 +47,7 @@ class CarrierController extends BaseController
         //$shop_url = 'ggh';
 
         $shop = DB::table('clicknships')->where('shop_url', $shop_url)->first();
+        $store_city = $shop->store_city;
         $token = ClicknShipAPI::getToken($shop->username, $shop->password);
         $token = json_encode($token, true);
         $token = json_decode($token, true);
@@ -55,7 +56,8 @@ class CarrierController extends BaseController
         $input = json_encode($request->all());
         if(!empty($input)){
         $origin  = $request->all();
-        $city = $origin['rate']['origin']['city'];
+        //$city = $origin['rate']['origin']['city'];
+        $city = $store_city;
         $destination = $origin['rate']['destination']['city'];
         
     // log the raw request -- this makes debugging much easier
