@@ -43,8 +43,9 @@ class ClicknshipController extends Controller
                 'store_city' => 'required',
                 'LocationId' => 'required',
             ]);
-            $name = json_decode(Auth::user());
+          //  $name = json_decode(Auth::user());
             //$test_url = 'ggh';
+            $shop = Auth::user();
             $shop_url = $shop->getDomain()->toNative();
             $url = DB::table('clicknships')->where('shop_url', $shop_url)->first();
 

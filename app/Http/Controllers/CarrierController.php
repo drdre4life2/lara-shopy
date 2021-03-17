@@ -43,8 +43,8 @@ class CarrierController extends BaseController
         Log::info($message);
 
         $shop = Auth::user();
-        //$shop_url = $shop->getDomain()->toNative();
-        $shop_url = 'ggh';
+        $shop_url = $shop->getDomain()->toNative();
+        //$shop_url = 'ggh';
 
         $shop = DB::table('clicknships')->where('shop_url', $shop_url)->first();
         $token = ClicknShipAPI::getToken($shop->username, $shop->password);
