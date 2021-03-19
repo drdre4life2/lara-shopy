@@ -93,6 +93,7 @@ class CarrierController extends BaseController
 
     //return amount to shopify in kobo
      $final_cost = $cost[0]->TotalAmount * 100;
+     $final_cost = 
      //exit;
      // use number_format because shopify api expects the price to be "25.00" instead of just "25"
 
