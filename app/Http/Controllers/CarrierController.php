@@ -202,7 +202,7 @@ class CarrierController extends BaseController
                 'currency' => 'USD',
                 'min_delivery_date' => $on_min_date,
                 'max_delivery_date' => $on_max_date
-            )]
+            )
         ));
 
         // encode into a json response
